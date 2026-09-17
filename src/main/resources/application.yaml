@@ -14,3 +14,6 @@ spring.jpa:
     default_schema: audit_schema
     audit_table_suffix: _AUD
     store_data_at_delete: true
+
+spring.sql.init.mode: always
+spring.sql.init.schema-locations: classpath:/sql/QUERIES.sql
