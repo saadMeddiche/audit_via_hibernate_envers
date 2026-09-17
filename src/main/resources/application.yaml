@@ -1,3 +1,16 @@
+spring.application.name: audit_via_hibernate_envers
+
 spring:
-  application:
-    name: audit_via_hibernate_envers
+  datasource:
+    url: jdbc:postgresql://localhost:5432/audit_via_hibernate_envers
+    username: admin
+    password: 123456
+    driver-class-name: org.postgresql.Driver
+
+spring.jpa:
+  hibernate:
+    ddl-auto: create
+  properties.org.hibernate.envers:
+    default_schema: audit_schema
+    audit_table_suffix: _AUD
+    store_data_at_delete: true
