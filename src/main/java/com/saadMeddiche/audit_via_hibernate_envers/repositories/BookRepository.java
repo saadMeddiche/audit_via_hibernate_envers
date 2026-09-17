@@ -1,0 +1,6 @@
+package com.saadMeddiche.audit_via_hibernate_envers.repositories;
+
+import com.saadMeddiche.audit_via_hibernate_envers.entities.Book;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface BookRepository extends JpaRepository<Book, Long> {}
