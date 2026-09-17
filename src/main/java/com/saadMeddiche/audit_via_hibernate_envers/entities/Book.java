@@ -6,6 +6,7 @@ import lombok.Setter;
 import org.hibernate.annotations.NaturalId;
 import org.hibernate.envers.Audited;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -22,7 +23,7 @@ public class Book {
     @Column(nullable = false, unique = true)
     private String title;
 
-    @NaturalId
+    @NaturalId(mutable = true)
     @Column(nullable = false, unique = true)
     private UUID serial;
 
@@ -32,5 +33,11 @@ public class Book {
 
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Tag> tags;
+
+    public void addTag(Tag tag) {
+        if(tag == null) return;
+        if(this.tags == null) this.tags = new ArrayList<>();
+        this.tags.add(tag);
+    }
 
 }
