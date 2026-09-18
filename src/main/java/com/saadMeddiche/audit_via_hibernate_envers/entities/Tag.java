@@ -3,11 +3,13 @@ package com.saadMeddiche.audit_via_hibernate_envers.entities;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.annotations.NaturalId;
 import org.hibernate.envers.Audited;
 
 @Entity
 @Audited
+@ToString
 @Getter @Setter
 public class Tag {
 

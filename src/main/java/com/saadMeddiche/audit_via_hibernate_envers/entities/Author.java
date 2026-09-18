@@ -3,13 +3,14 @@ package com.saadMeddiche.audit_via_hibernate_envers.entities;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.envers.Audited;
 
 import java.time.OffsetDateTime;
 import java.util.List;
 
 @Entity
-@Audited
+@Audited @ToString
 @Getter @Setter
 public class Author {
 
@@ -27,6 +28,7 @@ public class Author {
     @Column(nullable = false)
     private OffsetDateTime birthdate;
 
+    @ToString.Exclude
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "author")
     private List<Book> books;
 
