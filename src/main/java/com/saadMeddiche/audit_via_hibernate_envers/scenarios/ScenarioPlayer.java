@@ -43,6 +43,10 @@ public class ScenarioPlayer implements CommandLineRunner {
 
         add_tags_to_book(book, tags.getFirst());
 
+        Author secondAuthor = create_second_author_with_wrong_name();
+
+        update_book_author(book, secondAuthor);
+
     }
 
     public List<Tag> create_tags() {
@@ -117,5 +121,32 @@ public class ScenarioPlayer implements CommandLineRunner {
         this.bookRepository.save(book);
 
     }
+
+    public Author create_second_author_with_wrong_name() {
+
+        Author author = new Author();
+
+        author.setFirstName("Khalid");
+        author.setLastName("Meddiche");
+        author.setBirthdate(
+                OffsetDateTime.of(
+                        LocalDate.of(2003, 1 ,20),
+                        LocalTime.of(11, 0,0),
+                        ZoneOffset.UTC
+                )
+        );
+
+        return this.authorRepository.save(author);
+
+    }
+
+    public void update_book_author(Book book, Author author) {
+
+        book.setAuthor(author);
+
+        this.bookRepository.save(book);
+
+    }
+
 
 }
